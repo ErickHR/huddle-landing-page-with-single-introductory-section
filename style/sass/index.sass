@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap')
+
+
+$color__primary-violet : hsl(257, 40%, 49%)
+$color__primary-magenta-soft : hsl(300, 69%, 71%)
+$text__head-poppins : 'Poppins', sans-serif
+$text__body-opens-sans : 'Open Sans', sans-serif
+
+@mixin text-head( $weight: 600, $size )
+    font-family: $text__head-poppins
+    font-weight: $weight
+    font-size: $size
+    
+
+%text-body
+    font-family: $text__body-opens-sans
+    font-weight: 400 
+
+
+*::before, *, *::after
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+
+html
+    height: 100%
+
+body
+    height: auto
+    background-image: url( ../images/bg-desktop.svg )
+    background-size: cover
+    background-repeat: no-repeat
+    background-color: $color__primary-violet
+    padding: 40px 40px 0 40px
+    display: grid
+    justify-content: center
+
+.nav__logo
+    padding-bottom: 60px
+
+.main
+    max-width: 1440px
+    color: white
+    display: flex
+    column-gap: 40px
+    
+    &__img
+        width: 100%
+
+    &__section--rigth
+        flex-shrink: 10
+
+    &__head
+        display: flex
+        flex-direction: column
+        row-gap: 1px
+        @include text-head( $size:42px )
+        padding-bottom: 36px
+        padding-top: 32px
+
+    &__body
+        @include text-head( 400, $size:14px )
+
+    &__text--body
+        padding-bottom: 30px
+    
+    &__text--head-one
+        line-height: 38px
+        padding-bottom: 20px
+
+    &__text--head-two
+        line-height: 40px
+
+    &__button--register
+        @extend %text-body
+        padding: .8rem 3rem
+        color: $color__primary-magenta-soft
+        border-radius: 20px
+        background: white
+        box-shadow: 2px 2px 10px 0px black
+        cursor: pointer
+        outline: none
+        border: none
+        display: block
+        &.active
+            background-color: $color__primary-magenta-soft
+            color: white
+
+    
+.footer
+    display: flex
+    justify-content: flex-end
+    &__icon-social
+        display: flex
+        column-gap: 5px
+    &__icon--facebook, 
+    &__icon--twitter,
+    &__icon--instagram
+        border: 1px solid white
+        border-radius: 100%
+        width: 30px
+        height: 30px
+        display: flex
+        justify-content: center
+        align-items: center
+        color: white
+        &:hover
+            color: $color__primary-magenta-soft
+            border: 1px solid $color__primary-magenta-soft
+
+@media all and ( max-width: 732px )
+
+    body
+        padding-bottom: 60px
+        background-image: url( ../images/bg-mobile.svg )
+    
+    .main
+        flex-direction: column
+        
+        &__head
+            font-size: 28px
+            padding-bottom: 16px
+            text-align: center
+
+        &__body
+            justify-content: center
+            padding-bottom: 80px
+
+        &__text--body
+            text-align: center
+            font-size: 12px
+
+        &__button--register
+            margin: auto
+
+    .footer
+        justify-content: center
